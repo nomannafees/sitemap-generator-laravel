@@ -1,7 +1,7 @@
 # Laravel Sitemap Generator
 This project is a Laravel-based web application that crawls a website and generates an XML sitemap for SEO purposes. It is optimized for speed and performance using Laravel queues and background jobs.
 
-#Features
+# Features
 
 Accepts a domain URL and crawls the entire website.
 
@@ -13,7 +13,7 @@ Simple UI with Bootstrap 5.
 
 Allows users to download the sitemap.xml file.
 
-#Prerequisites
+# Prerequisites
 
 Ensure you have the following installed:
 
@@ -28,7 +28,7 @@ MySQL or SQLite
 Node.js & NPM (for frontend assets)
 
 
-#Step 1: Clone the Repository
+# Step 1: Clone the Repository
 
 # Clone the repository from GitHub
 git clone https://github.com/nomannafees/laravel-sitemap-generator.git
@@ -54,7 +54,7 @@ DB_DATABASE=sitemap_db<br>
 DB_USERNAME=root<br>
 DB_PASSWORD=yourpassword<br>
 
-#Step 4: Generate Application Key
+# Step 4: Generate Application Key
 
 php artisan key:generate
 php artisan config:cache
@@ -64,25 +64,25 @@ php artisan config:cache
 # Run migrations
 php artisan migrate
 
-#Step 6: Setup Storage Symlink for Sitemap XML
+# Step 6: Setup Storage Symlink for Sitemap XML
 
 php artisan storage:link
 
-#Step 7: Start Laravel Development Server
+# Step 7: Start Laravel Development Server
 
 php artisan serve
 
 Now, visit http://127.0.0.1:8000 in your browser.
 
-#Step 8: Configure Queue Driver
+# Step 8: Configure Queue Driver
 
 Open .env and set:
 
 QUEUE_CONNECTION=database
 
-#Step 9: Run Queue Worker
+# Step 9: Run Queue Worker
 
-#php artisan queue:work
+# php artisan queue:work
 
 Generating & Downloading Sitemap
 
@@ -126,6 +126,6 @@ php artisan view:clear
 php artisan queue:failed
 php artisan queue:restart
 
-#Congratulations!
+# Congratulations!
 
 Your Laravel Sitemap Generator is ready.
