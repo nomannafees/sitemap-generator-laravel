@@ -112,12 +112,14 @@ Step 2: Set File Permissions
 chmod -R 775 storage bootstrap/cache
 
 # Clear cache
+
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
 php artisan view:clear
 
 # Check queue status
+
 php artisan queue:failed
 php artisan queue:restart
 
