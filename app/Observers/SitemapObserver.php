@@ -34,6 +34,7 @@ class SitemapObserver extends CrawlObserver
         $dom->preserveWhiteSpace = false;
         $dom->formatOutput = true;
         $dom->loadXML($this->sitemap->asXML());
-        file_put_contents(storage_path('app/public/sitemap.xml'), $dom->saveXML());
+        $sitemapPath = storage_path('app/public/sitemap.xml');
+        file_put_contents($sitemapPath, $dom->saveXML());
     }
 }

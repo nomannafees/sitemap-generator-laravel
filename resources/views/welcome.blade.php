@@ -18,19 +18,6 @@
                     <h4><i class="fa fa-sitemap"></i> Sitemap Generator</h4>
                 </div>
                 <div class="card-body">
-                    @if(session('success'))
-                        <script>
-                            $(document).ready(function () {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Success!',
-                                    text: '{{ session('success') }}',
-                                    showConfirmButton: false,
-                                    timer: 3000
-                                });
-                            });
-                        </script>
-                    @endif
                     <form action="{{ route('generate.sitemap') }}" method="POST">
                         @csrf
                         <div class="row mt-2">
@@ -59,42 +46,6 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $('#downloadBtn').click(function (event) {
-            event.preventDefault();
-            let downloadUrl = $(this).attr('href');
-            $.ajax({
-                url: downloadUrl,
-                type: 'GET',
-                success: function (response, status, xhr) {
-                    if (xhr.status === 200) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success!',
-                            text: 'Sitemap downloaded successfully!',
-                            showConfirmButton: false,
-                            timer: 3000
-                        });
-                        window.location.href = downloadUrl;
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error!',
-                            text: 'Sitemap not found!',
-                        });
-                    }
-                },
-                error: function () {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops!',
-                        text: 'An error occurred while downloading!',
-                    });
-                }
-            });
-        });
-    });
-</script>
+    <script src="{{asset('custom.js')}}"></script>
 </body>
 </html>

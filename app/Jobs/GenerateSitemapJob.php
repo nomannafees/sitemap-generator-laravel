@@ -8,6 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Crawler\Crawler;
 use SimpleXMLElement;
 
@@ -21,7 +22,6 @@ class GenerateSitemapJob implements ShouldQueue
     {
         $this->url = $url;
     }
-
     public function handle()
     {
         $sitemap = new SimpleXMLElement('<urlset/>');
@@ -30,5 +30,6 @@ class GenerateSitemapJob implements ShouldQueue
             ->setMaximumDepth(10)
             ->setTotalCrawlLimit(500)
             ->startCrawling($this->url);
+        Cache::put('sitemap_status', 'done', now()->addMinutes(10));
     }
 }
